@@ -1,0 +1,64 @@
+<%- include('./common/header.ejs') %>
+    <div class="page-header container">
+      <h1><a href="/">亡者农药</a> <small>英雄管理器</small></h1>
+    </div>
+  </header>
+  <div class="container hero-list">
+    <form>
+      <input type="hidden" name="id" value="<%= id %>">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">英雄名称</label>
+        <div class="col-sm-10">
+          <input type="text" name="name" class="form-control" value="<%= name %>">
+        </div>
+        <label class="col-sm-2 control-label">年龄</label>
+        <div class="col-sm-10">
+          <input type="text" name="age" class="form-control" value="<%= age %>">
+        </div>
+        <label class="col-sm-2 control-label">地址</label>
+        <div class="col-sm-10">
+          <input type="text" name="address" class="form-control" value="<%= address %>">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">性别</label>
+        <div class="col-sm-10">
+          <label class="radio-inline">
+            <input type="radio" value="男" name="gender" <% if (gender == '男') {%> checked <% } %>> 男
+          </label>
+          <label class="radio-inline">
+            <input type="radio" value="女" name="gender" <% if (gender == '女') {%> checked <% } %>> 女
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">创建时间</label>
+        <div class="col-sm-10">
+          <%= date %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-secondary">保存修改</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <%- include('./common/footer.ejs') %>
+
+<script>
+  $(function() {
+    $(".btn-secondary").on("click", function(e) {
+      e.preventDefault()
+      $.post({
+        url: '/editHeroInfo',
+        data: $("form").serialize(),
+        success: function(res) {
+          if (res.code == 200) {
+            location.href = '/'
+          }
+        }
+      })
+    })
+  })
+</script>

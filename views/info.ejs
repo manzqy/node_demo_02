@@ -1,0 +1,34 @@
+<%- include('./common/header.ejs') %>
+  <div class="container hero-list">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="bg-info">名称</th>
+          <td class="text-success h4"><%= name %></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="bg-info">性别:</th>
+          <td class="text-success h4"><%= gender %></td>
+        </tr>
+        <tr>
+          <th class="bg-info">年龄:</th>
+          <td class="text-success h4"><%= age %></td>
+        </tr>
+        <tr>
+          <th class="bg-info">地址:</th>
+          <td class="text-success h4"><%= address %></td>
+        </tr>
+        <tr>
+          <th class="bg-info">添加时间:</th>
+          <td class="text-success h4"><%= date %></td>
+        </tr>
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+<%- include('./common/footer.ejs') %>
